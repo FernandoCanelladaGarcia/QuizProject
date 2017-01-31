@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_cheat">Cheat Screen</string>
+</resources>
