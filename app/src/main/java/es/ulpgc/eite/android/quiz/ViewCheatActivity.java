@@ -7,13 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CheatActivity extends AppCompatActivity {
+public class ViewCheatActivity extends AppCompatActivity {
 
   private boolean toolbarVisible;
   private boolean confirmBtnClicked;
   private boolean answerVisible;
   private boolean answerBtnClicked;
   private QuizApp quizApp;
+
+  //Presentador de cheat
+  private QuestionPresenter presenter;
 
   private String falseLabel, trueLabel;
   private String confirmLabel;
@@ -49,10 +52,10 @@ public class CheatActivity extends AppCompatActivity {
         onFalseBtnClicked();
       }
     });
-    
+    presenter = new QuestionPresenter(this);
     onScreenStarted();
   }
-
+  //private a public para operar con el presentador
   private void onScreenStarted() {
     //quizApp = (QuizApp) getApplication();
 

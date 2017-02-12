@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CheatActivity"
+            android:name=".ViewCheatActivity"
             android:label="@string/title_activity_cheat"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

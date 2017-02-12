@@ -50,11 +50,11 @@ public class QuizApp extends Application {
     cheatState.answerVisible = false;
     cheatState.answerBtnClicked = questionState.answerBtnClicked;
 
-    activity.startActivity(new Intent(activity, CheatActivity.class));
+    activity.startActivity(new Intent(activity, ViewCheatActivity.class));
   }
 
 
-  public void backToQuestionScreen(CheatActivity activity){
+  public void backToQuestionScreen(ViewCheatActivity activity){
     activity.finish();
   }
 

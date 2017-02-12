@@ -7,10 +7,15 @@ package es.ulpgc.eite.android.quiz;
 public class QuestionPresenter {
     private ModelQuestionStore model;
     private ViewQuestionActivity qView;
+    private ViewCheatActivity cheatView;
 
     public QuestionPresenter(ViewQuestionActivity view){
         this.model = new ModelQuestionStore();
         qView = view;
+    }
+    public QuestionPresenter(ViewCheatActivity view){
+        this.model = new ModelQuestionStore();
+        cheatView = view;
     }
 
     public void onTrueBtnClicked(){
@@ -28,7 +33,7 @@ public class QuestionPresenter {
     }
 
     public void onCheatBtnClicked(){
-
+        qView.goToCheatScreen();
     }
 
     public void getTrue(){

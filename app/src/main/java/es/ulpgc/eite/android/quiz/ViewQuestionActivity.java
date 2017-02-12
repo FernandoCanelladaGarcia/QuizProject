@@ -250,8 +250,9 @@ public class ViewQuestionActivity extends AppCompatActivity {
   }
   */
 
-  private void goToCheatScreen(){
-    startActivity(new Intent(this, CheatActivity.class));
+  //private a public para trabajar con el presentador
+  public void goToCheatScreen(){
+    startActivity(new Intent(this, ViewCheatActivity.class));
     //quizApp.goToCheatScreen(this);
   }
 
