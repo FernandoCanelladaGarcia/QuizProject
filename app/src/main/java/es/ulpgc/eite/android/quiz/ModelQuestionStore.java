@@ -1,13 +1,14 @@
 package es.ulpgc.eite.android.quiz;
 
 
-
-public class QuestionStore  {
+//MODELO
+public class ModelQuestionStore {
 
   private String correctLabel, incorrectLabel;
   private String falseLabel, trueLabel, cheatLabel, nextLabel;
   private int quizIndex;
   private boolean[] userAnswers = new boolean[20];
+  private int numberOfQuestions = userAnswers.length;
 
   private String[] quizQuestions = {
       "Christian Bale played Batman in 'The Dark Knight Rises'?", // 1
@@ -55,7 +56,7 @@ public class QuestionStore  {
       true // 20
   };
 
-  public QuestionStore() {
+  public ModelQuestionStore() {
     falseLabel = "False";
     trueLabel = "True";
     correctLabel = "Correct!";
@@ -69,6 +70,7 @@ public class QuestionStore  {
     return cheatLabel;
   }
 
+  //Respuesta
   public String getCurrentAnswer() {
     if(quizAnswers[quizIndex] == userAnswers[quizIndex]) {
       return correctLabel;
@@ -78,9 +80,39 @@ public class QuestionStore  {
   }
 
   public String getCurrentQuestion() {
-    return quizQuestions[quizIndex];
+    //Este codigo producia error en la APP (OutOfBounds.Exception)
+    //return quizQuestions[quizIndex];
+
+    if(quizIndex<numberOfQuestions){
+      return quizQuestions[quizIndex];
+    }else{
+      quizIndex = 0;
+      return quizQuestions[quizIndex];
+    }
   }
 
+  public String getNextQuestion() {
+
+//    quizIndex++;
+//    return getCurrentQuestion();
+    if(quizIndex<numberOfQuestions){
+      quizIndex++;
+    }else{
+      quizIndex=0;
+    }
+    return getCurrentQuestion();
+  }
+
+  public void setCurrentAnswer(boolean answer) {
+    userAnswers[quizIndex] = answer;
+  }
+
+  //Pasa de Question Activity a Question Store
+  public void onAnswerBtnClicked(boolean answer){
+    setCurrentAnswer(answer);
+  }
+
+  //Etiquetas
   public String getFalseLabel() {
     return falseLabel;
   }
@@ -89,17 +121,11 @@ public class QuestionStore  {
     return nextLabel;
   }
 
-  public String getNextQuestion() {
-    quizIndex++;
-    return getCurrentQuestion();
-  }
 
   public String getTrueLabel() {
     return trueLabel;
   }
 
-  public void setCurrentAnswer(boolean answer) {
-    userAnswers[quizIndex] = answer;
-  }
+
 
 }
